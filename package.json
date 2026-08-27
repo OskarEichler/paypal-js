@@ -1,49 +1,60 @@
 {
-  "name": "@paypal/paypal-js-root",
-  "description": "Collection of libraries supporting PayPal's JS SDK",
-  "private": true,
-  "workspaces": [
-    "packages/*",
-    "packages/react-paypal-js-storybook/*"
+  "name": "@paypal/react-paypal-js",
+  "version": "10.3.0",
+  "description": "React components for the PayPal JS SDK",
+  "keywords": [
+    "react",
+    "component",
+    "paypal",
+    "button",
+    "checkout",
+    "payment",
+    "paypal javascript sdk",
+    "paypal smart buttons"
+  ],
+  "main": "index.js",
+  "module": "dist/esm/react-paypal-js.js",
+  "types": "dist/types/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/react-paypal-js.js",
+      "require": "./dist/cjs/react-paypal-js.js"
+    },
+    "./sdk-v6": {
+      "types": "./dist/types/v6/index.d.ts",
+      "import": "./dist/v6/esm/react-paypal-js.js"
+    },
+    "./sdk-v6/server": {
+      "types": "./dist/types/v6/server.d.ts",
+      "import": "./dist/v6/esm/server.js"
+    }
+  },
+  "files": [
+    "dist"
   ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/paypal/paypal-js.git"
+    "url": "git://github.com/paypal/paypal-js.git",
+    "directory": "packages/react-paypal-js"
   },
-  "scripts": {
-    "build": "npm run build --workspaces --if-present",
-    "build-storybook:v5": "npm run build-storybook --workspace=@paypal/react-paypal-js-storybook-v5",
-    "build-storybook:v6": "npm run build-storybook --workspace=@paypal/react-paypal-js-storybook-v6",
-    "storybook:v5": "npm run storybook --workspace=@paypal/react-paypal-js-storybook-v5",
-    "storybook:v6": "npm run storybook --workspace=@paypal/react-paypal-js-storybook-v6",
-    "changeset:add": "changeset add",
-    "changeset:release": "npm run build && changeset publish",
-    "changeset:version": "changeset version && npm i --package-lock-only",
-    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules",
-    "dev": "concurrently \"npm:dev:*\"",
-    "dev:paypal-js": "npm run dev --workspace=@paypal/paypal-js",
-    "dev:react-paypal-js": "npm run dev --workspace=@paypal/react-paypal-js",
-    "docs:v6": "npm run docs:v6 --workspace=@paypal/paypal-js",
-    "format": "prettier --write --ignore-unknown .",
-    "format:check": "prettier --check .",
-    "lint": "npm run lint --workspaces --if-present",
-    "prepare": "husky install",
-    "test": "npm run lint && npm run test --workspaces --if-present",
-    "test:e2e": "npm run test:e2e --workspaces --if-present",
-    "publish-react-paypal-js-alpha": "npm run build && npm publish --workspace=@paypal/react-paypal-js --tag alpha"
+  "homepage": "https://paypal.github.io/paypal-js/web-sdk-v6-react-storybook/",
+  "dependencies": {
+    "@paypal/paypal-js": "^10.1.0",
+    "@paypal/sdk-constants": "^1.0.122",
+    "server-only": "^0.0.1"
   },
-  "lint-staged": {
-    "*": [
-      "prettier --write --ignore-unknown"
-    ]
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18 || ^19",
+    "react-dom": "^16.8.0 || ^17 || ^18 || ^19"
   },
-  "devDependencies": {
-    "@changesets/cli": "^2.29.8",
-    "concurrently": "^9.2.1",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.8.1",
-    "typescript": "^5.9.3"
-  }
+  "bugs": {
+    "url": "https://github.com/paypal/react-paypal-js/issues"
+  },
+  "author": "",
+  "packageManager": "npm@12.0.2"
 }
